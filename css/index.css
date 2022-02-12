@@ -2,8 +2,13 @@
 	animation: rotation 8s infinite linear;
 }
 
-.skipbut {
-  top: 50%;
+
+
+.skipbut:hover {
+  filter: brightness(50%);
+}
+.skipbut:active {
+  filter: brightness(20%);
 }
 
 @keyframes rotation {
@@ -22,7 +27,6 @@
 
 h2 {
 	font-family: Jet Set;
-	position: absolute;
 	width: 100%;
 	bottom: 3;
 	text-align: center;
