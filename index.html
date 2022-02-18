@@ -13,10 +13,21 @@
 </head>
 
 <body>
+  <button class="innout" onclick="popinout()">Stations</button>
+  <div class="sidebar" style="display: none;">
+    <button class="active" onclick="popinout()">Close</button>
+    <button onclick="switchstation('live')">Live</button>
+    <button onclick="switchstation('memes')">Memes</button>
+  </div>
+
+    <div class="content">
     <audio autoplay id="stream"></audio>
     <center><img src="images/Backward.png" width="100" class="skipbut" onclick="skip(-1)">
-    <img src="images/logo.png" width="540" height="564" class="rotate" onclick="test()" >
-    <img src="images/Forward.png" height="100" class="skipbut" onclick="skip(1)"></center>
-    <h2>Tokyo-To Online</h2>
+    <div class="turntable"><img src="images/test.png" width="540" id="record" class="rotate image1" onclick="stop()">
+      <img src="images/light.png" width="540" id="light" class="light-rotate image2" onclick="stop()"></div>
+    <img src="images/Forward.png" width="100" class="skipbut" onclick="skip(1)">
+    <h2>Tokyo-To Online</h2></center>
+
+    </div>
 </body>
 </html>

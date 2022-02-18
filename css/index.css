@@ -2,7 +2,35 @@
 	animation: rotation 8s infinite linear;
 }
 
+.image1 {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.image2 {
+  position: absolute;
+  top: 0px;
+  left: 0%;
+}
 
+#spin-in {
+ transition: transform 2s;
+}
+
+#spin-out {
+  transform: translateY(-1000px);
+}
+
+.turntable {
+	transform: rotateX(60deg);
+	transition: all .75s ease;
+	display: inline-block;
+	top: 0;
+}
+
+.turntable-trans {
+	transform: rotateX(0deg);
+}
 
 .skipbut:hover {
   filter: brightness(50%);
@@ -20,22 +48,119 @@
 	}
 }
 
+.light-rotate{
+  animation-name: example;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes example {
+  0%   {transform: rotate(-1deg);}
+  50%  {transform: rotate(1deg);}
+	100%   {transform: rotate(-1deg);}
+}
+
 @font-face {
 	font-family: Jet Set;
 	src: url(fonts/JetSet.ttf);
 }
 
-h2 {
-	font-family: Jet Set;
+.log {
+	display: block;
 	width: 100%;
-	bottom: 3;
-	text-align: center;
+	border: none;
+  color: black;
+  padding: 16px;
+	background-color: inherit;
+	text-align: left;
+	font-size: inherit;
+	font-family: Jet Set;
 }
+
 
 body {
 	background-color: #0c593b;
+	font-family: Jet Set;
+	margin:0;
+}
+.sidebar {
+  margin: 0;
+  padding: 0;
+  right: 0;
+  width: 200px;
+  background-color: #f5f242;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
 }
 
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.innout{
+  position: fixed;
+	right: 0px;
+	top:0;
+	border: none;
+  color: white;
+  padding: 16px;
+	background-color: #04AA6D;
+	text-align: left;
+	font-size: inherit;
+	font-family: Jet Set;
+}
+
+.sidebar button {
+  display: block;
+	width: 100%;
+	border: none;
+  color: black;
+  padding: 16px;
+	background-color: inherit;
+	text-align: left;
+	font-size: inherit;
+	font-family: Jet Set;
+}
+
+.sidebar button:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.sidebar button.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.content {
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  .content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
 .news_button {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
