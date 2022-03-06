@@ -39,6 +39,15 @@
   filter: brightness(20%);
 }
 
+@keyframes fadeoutanim {
+	from {
+		filter: brightness(100%);
+	}
+	to {
+		filter: brightness(0%);
+	}
+}
+
 @keyframes rotation {
 	from {
 		transform: rotate(0deg);
@@ -79,10 +88,11 @@
 }
 
 
-body {
+html, body {
 	background-color: #0c593b;
 	font-family: Jet Set;
-	margin:0;
+	height: 100%;
+  margin: 0;
 }
 .sidebar {
   margin: 0;
@@ -115,6 +125,15 @@ body {
 	font-family: Jet Set;
 }
 
+.gamestart{
+	border: none;
+  color: white;
+  padding: 16px;
+	background-color: #04AA6D;
+	font-size: inherit;
+	font-family: Jet Set;
+}
+
 .sidebar button {
   display: block;
 	width: 100%;
@@ -143,6 +162,20 @@ body {
 }
 
 .content {
+	height: 100%;
+	display: none;
+}
+
+.opening {
+	height: 100%;
+}
+
+.fadeout {
+	animation: fadeoutanim 1s 1 linear;
+}
+
+.opening center{
+  transform: translateY(15%);
 }
 
 @media screen and (max-width: 700px) {

@@ -2,7 +2,6 @@ var allofit={live:["iloveyoubump.mp3","what.mp3"],memes:["doinurmombut.mp3"]};//
 var count=0;
 var theStation="";
 
-window.onload="alert('a')";
 
 function stop(){
   if (document.getElementById("stream").paused) {
@@ -28,6 +27,9 @@ function skip(val){
       count=0;
     }
   }
+  if (theStation=="") {
+
+  }
   document.getElementById("stream").src="music/"+allofit[theStation][count];
   document.getElementById("record").style.filter = " grayscale(0%)";
   document.getElementById("record").style.animationPlayState = 'running';
@@ -44,7 +46,7 @@ function switchstation(station) {
       document.getElementById("record").style.transform = "translateY(0px)";
       document.getElementById("light").style.transform = "translateY(0px)";
       setTimeout(cutAnim,1000);
-      //setTimeout(skip(0),5000);
+      setTimeout(function() {skip(0);},2500);
     }else {
       document.getElementById("record").style.transform = "translateY(-1000px)";
       document.getElementById("light").style.transform = "translateY(-1000px)";
@@ -74,4 +76,12 @@ function popinout(){
     document.getElementsByClassName("sidebar")[0].style.display = "none";
     document.getElementsByClassName("innout")[0].style.right = "0px";
   }
+}
+
+function gamestart(){
+    document.getElementsByClassName("opening")[0].classList.add("fadeout");
+    setTimeout(function() {document.getElementsByClassName("opening")[0].style.display = "none";
+    document.getElementsByClassName("content")[0].style.display = "block";
+    stop();},1000);
+
 }

@@ -7,27 +7,27 @@
     <title>Tokyo-To Online</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/index.css'>
-    <script src='js/main.js'></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='js/main.js'></script>
 
 </head>
 
 <body>
+  <div class="opening"><center><img src="images/intrologo.png" width="80%"><br /><br /><button class="gamestart" onclick="gamestart()">Start the station!</button></center></div>
+  <div class="content">
   <button class="innout" onclick="popinout()">Stations</button>
-  <div class="sidebar" style="display: none;">
-    <button class="active" onclick="popinout()">Close</button>
-    <button onclick="switchstation('live')">Live</button>
-    <button onclick="switchstation('memes')">Memes</button>
-  </div>
-
-    <div class="content">
-    <audio autoplay id="stream"></audio>
+    <div class="sidebar" style="display: none;">
+      <button class="active" onclick="popinout()">Close</button>
+      <button onclick="switchstation('live')">Live</button>
+      <button onclick="switchstation('memes')">Memes</button>
+    </div>
+    <audio autoplay id="stream" src="music/iloveyoubump.mp3" allow="autoplay"></audio>
     <center><img src="images/Backward.png" width="100" class="skipbut" onclick="skip(-1)">
     <div class="turntable"><img src="images/test.png" width="540" id="record" class="rotate image1" onclick="stop()">
-      <img src="images/light.png" width="540" id="light" class="light-rotate image2" onclick="stop()"></div>
+    <img src="images/light.png" width="540" id="light" class="light-rotate image2" onclick="stop()"></div>
     <img src="images/Forward.png" width="100" class="skipbut" onclick="skip(1)">
     <h2>Tokyo-To Online</h2></center>
-
-    </div>
+  </div>
 </body>
 </html>
