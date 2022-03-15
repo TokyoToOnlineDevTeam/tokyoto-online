@@ -1,6 +1,6 @@
 var allofit={live:["iloveyoubump.mp3","what.mp3"],memes:["doinurmombut.mp3"]};//This is supposed to be the floders in the music server
 var count=0;
-var theStation="";
+var theStation="live";
 
 
 function stop(){
