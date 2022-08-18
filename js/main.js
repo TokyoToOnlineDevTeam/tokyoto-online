@@ -1,7 +1,6 @@
-var allofit={live:["iloveyoubump.mp3","what.mp3"],memes:["doinurmombut.mp3"]};//This is supposed to be the floders in the music server
+var allofit={live:["iloveyoubump.mp3","what.mp3"],memes:["doinurmombut.mp3"],jsr:["coldjgw.mp3"],jsrf:["teknopathic.mp3"]};//This is supposed to be the floders in the music server
 var count=0;
 var theStation="live";
-
 
 function stop(){
   if (document.getElementById("stream").paused) {

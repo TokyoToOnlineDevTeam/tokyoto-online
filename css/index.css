@@ -89,7 +89,9 @@
 
 
 html, body {
-	background-color: #0c593b;
+	background-image: url("../bg/99street.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 	font-family: Jet Set;
 	height: 100%;
   margin: 0;
@@ -223,4 +225,11 @@ html, body {
   -moz-border-radius: 20px;
   border-radius: 20px;
   text-decoration: none;
+}
+
+h2 {
+  color: white;
+  font-size: 40px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
