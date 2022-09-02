@@ -1,7 +1,6 @@
-var allofit={live:["iloveyoubump.mp3","what.mp3"],memes:["doinurmombut.mp3"],jsr:["coldjgw.mp3"],jsrf:["teknopathic.mp3"]};//This is supposed to be the floders in the music server
+var allofit={live:["iloveyoubump.mp3","what.mp3"],memes:["doinurmombut.mp3"],jsr:["coldjgw.mp3"],jsrf:["teknopathic.mp3"],rand:[]};//This is supposed to be the folders in the music server
 var count=0;
 var theStation="live";
-
 function stop(){
   if (document.getElementById("stream").paused) {
     document.getElementById("record").style.filter = " grayscale(0%)";
@@ -26,9 +25,7 @@ function skip(val){
       count=0;
     }
   }
-  if (theStation=="") {
 
-  }
   document.getElementById("stream").src="music/"+allofit[theStation][count];
   document.getElementById("record").style.filter = " grayscale(0%)";
   document.getElementById("record").style.animationPlayState = 'running';
@@ -37,7 +34,7 @@ function skip(val){
 
 function switchstation(station) {
   if (station==null) {
-    console.log(Object.keys(allofit));
+    //console.log(Object.keys(allofit));
     document.getElementById("record").style.transition = "transform 1s";
     document.getElementById("light").style.transition = "transform 1s";
     if (document.getElementById("record").style.transform == "translateY(-1000px)") {
@@ -52,6 +49,23 @@ function switchstation(station) {
       setTimeout(switchstation,1000);
     }
   }else{
+    if (station=="rand"){
+      var holdover=[];
+      allofit["rand"].length=0;
+      for (var i = 0; i < Object.keys(allofit).length; i++) {//if we ever go with folders, this will need to be changed
+        if(Object.keys(allofit)[i]!="rand"){
+          for (var o = 0; o < allofit[Object.keys(allofit)[i]].length; o++) {
+            holdover.push(allofit[Object.keys(allofit)[i]][o]);
+          }
+        }
+      }
+      while (allofit["rand"].length!=holdover.length) {
+        var num=Math.floor(Math.random() * holdover.length);
+        if (!allofit["rand"].includes(holdover[num])) {
+          allofit["rand"].push(holdover[num]);
+        }
+      }
+    }
     document.getElementById("stream").pause();
     cutAnim();//"why is this in a different function" Because JavaScript hates me. also why setTimeout instead of a simple delay() func WHICH STOCK JAVASCRIPT DOESN'T HAVE FOR SOME REASON
     document.getElementById("record").style.filter = " grayscale(0%)";
