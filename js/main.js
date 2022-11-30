@@ -1,7 +1,9 @@
-var allofit={live:["iloveyoubump.mp3","what.mp3"],memes:["doinurmombut.mp3"],jsr:["coldjgw.mp3"],jsrf:["teknopathic.mp3"],rand:[]};//This is supposed to be the folders in the music server
+import { stationList } from "./stations.js";
+console.log(stationList);
+
 var count=0;
 var theStation="live";
-function stop(){
+window.stop = function(){
   if (document.getElementById("stream").paused) {
     document.getElementById("record").style.filter = " grayscale(0%)";
     document.getElementById("record").style.animationPlayState = 'running';
@@ -15,26 +17,26 @@ function stop(){
   }
 }
 
-function skip(val){
+window.skip = function(val){
   if(document.getElementById("stream").src!=""){
     count+=val;
     if (count<0) {
-      count=allofit[theStation].length-1;
+      count=stationList[theStation].length-1;
     }
-    if (count>=allofit[theStation].length) {
+    if (count>=stationList[theStation].length) {
       count=0;
     }
   }
 
-  document.getElementById("stream").src="music/"+allofit[theStation][count];
+  document.getElementById("stream").src="music/"+stationList[theStation][count];
   document.getElementById("record").style.filter = " grayscale(0%)";
   document.getElementById("record").style.animationPlayState = 'running';
   document.getElementById("stream").play();
 }
 
-function switchstation(station) {
+window.switchstation = function(station) {
   if (station==null) {
-    //console.log(Object.keys(allofit));
+    //console.log(Object.keys(stationList));
     document.getElementById("record").style.transition = "transform 1s";
     document.getElementById("light").style.transition = "transform 1s";
     if (document.getElementById("record").style.transform == "translateY(-1000px)") {
@@ -51,18 +53,18 @@ function switchstation(station) {
   }else{
     if (station=="rand"){
       var holdover=[];
-      allofit["rand"].length=0;
-      for (var i = 0; i < Object.keys(allofit).length; i++) {//if we ever go with folders, this will need to be changed
-        if(Object.keys(allofit)[i]!="rand"){
-          for (var o = 0; o < allofit[Object.keys(allofit)[i]].length; o++) {
-            holdover.push(allofit[Object.keys(allofit)[i]][o]);
+      stationList["rand"].length=0;
+      for (var i = 0; i < Object.keys(stationList).length; i++) {//if we ever go with folders, this will need to be changed
+        if(Object.keys(stationList)[i]!="rand"){
+          for (var o = 0; o < stationList[Object.keys(stationList)[i]].length; o++) {
+            holdover.push(stationList[Object.keys(stationList)[i]][o]);
           }
         }
       }
-      while (allofit["rand"].length!=holdover.length) {
+      while (stationList["rand"].length!=holdover.length) {
         var num=Math.floor(Math.random() * holdover.length);
-        if (!allofit["rand"].includes(holdover[num])) {
-          allofit["rand"].push(holdover[num]);
+        if (!stationList["rand"].includes(holdover[num])) {
+          stationList["rand"].push(holdover[num]);
         }
       }
     }
@@ -81,7 +83,7 @@ function cutAnim(){
   document.getElementById("light").classList.toggle("light-rotate");
 }
 
-function popinout(){
+window.popinout = function(){
   if (document.getElementsByClassName("sidebar")[0].style.display == "none") {
     document.getElementsByClassName("sidebar")[0].style.display = "block";
     document.getElementsByClassName("innout")[0].style.right = "0px";
@@ -91,10 +93,12 @@ function popinout(){
   }
 }
 
-function gamestart(){
-    document.getElementsByClassName("opening")[0].classList.add("fadeout");
+
+window.gamestart = function(){
+  document.getElementsByClassName("opening")[0].classList.add("fadeout");
     setTimeout(function() {document.getElementsByClassName("opening")[0].style.display = "none";
     document.getElementsByClassName("content")[0].style.display = "block";
     stop();},1000);
-
 }
+
+
