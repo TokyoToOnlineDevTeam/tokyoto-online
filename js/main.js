@@ -1,3 +1,4 @@
+//USE relistmusic.exe TO UPDATE SONG LIST
 import { stationList } from "./stations.js";
 console.log(stationList);
 
@@ -27,8 +28,13 @@ window.skip = function(val){
       count=0;
     }
   }
-
-  document.getElementById("stream").src="music/"+stationList[theStation][count];
+  if (theStation=="rand"){//this is a pretty dumb way to circumvent the folder seperation for the randomizer
+    document.getElementById("stream").src="music/"+stationList[theStation][count];
+    console.log("music/"+stationList[theStation][count]);
+  }else{
+    document.getElementById("stream").src="music/"+theStation+"/"+stationList[theStation][count];
+    console.log("music/"+theStation+"/"+stationList[theStation][count]);
+  }
   document.getElementById("record").style.filter = " grayscale(0%)";
   document.getElementById("record").style.animationPlayState = 'running';
   document.getElementById("stream").play();
@@ -54,10 +60,10 @@ window.switchstation = function(station) {
     if (station=="rand"){
       var holdover=[];
       stationList["rand"].length=0;
-      for (var i = 0; i < Object.keys(stationList).length; i++) {//if we ever go with folders, this will need to be changed
+      for (var i = 0; i < Object.keys(stationList).length; i++) {//this is just to tide over while we don't have proper code with randomness.
         if(Object.keys(stationList)[i]!="rand"){
           for (var o = 0; o < stationList[Object.keys(stationList)[i]].length; o++) {
-            holdover.push(stationList[Object.keys(stationList)[i]][o]);
+            holdover.push(Object.keys(stationList)[i]+"/"+stationList[Object.keys(stationList)[i]][o]);
           }
         }
       }
@@ -68,6 +74,7 @@ window.switchstation = function(station) {
         }
       }
     }
+    console.log(stationList["rand"]);
     document.getElementById("stream").pause();
     cutAnim();//"why is this in a different function" Because JavaScript hates me. also why setTimeout instead of a simple delay() func WHICH STOCK JAVASCRIPT DOESN'T HAVE FOR SOME REASON
     document.getElementById("record").style.filter = " grayscale(0%)";
@@ -100,5 +107,3 @@ window.gamestart = function(){
     document.getElementsByClassName("content")[0].style.display = "block";
     stop();},1000);
 }
-
-
