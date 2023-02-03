@@ -37,6 +37,7 @@ window.skip = function(val){
   }
   document.getElementById("record").style.filter = " grayscale(0%)";
   document.getElementById("record").style.animationPlayState = 'running';
+  document.getElementById("title").innerHTML = stationList[theStation][count];
   document.getElementById("stream").play();
 }
 
@@ -46,7 +47,12 @@ window.switchstation = function(station) {
     document.getElementById("record").style.transition = "transform 1s";
     document.getElementById("light").style.transition = "transform 1s";
     if (document.getElementById("record").style.transform == "translateY(-1000px)") {
-      document.getElementById("record").src = "images/"+theStation+"_record.png";
+      $.get("images/"+theStation+"_record.png")
+      .done(function() { 
+        document.getElementById("record").src = "images/"+theStation+"_record.png";
+      }).fail(function() { 
+        document.getElementById("record").src = "images/misc_record.png";
+      });
       document.getElementById("record").style.transform = "translateY(0px)";
       document.getElementById("light").style.transform = "translateY(0px)";
       setTimeout(cutAnim,1000);
@@ -103,6 +109,7 @@ window.popinout = function(){
 
 window.gamestart = function(){
   document.getElementsByClassName("opening")[0].classList.add("fadeout");
+  switchstation(Object.keys(stationList)[Math.floor(Math.random() * Object.keys(stationList).length)]);
     setTimeout(function() {document.getElementsByClassName("opening")[0].style.display = "none";
     document.getElementsByClassName("content")[0].style.display = "block";
     stop();},1000);

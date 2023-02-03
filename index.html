@@ -7,7 +7,7 @@
     <title>Tokyo-To Online</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/index.css'>
-
+    <link rel="shortcut icon" href="bg/jsr.svg">
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src='js/main.js'></script>
 
@@ -23,14 +23,27 @@
       <button onclick="switchstation('memes')">Memes</button>
       <button onclick="switchstation('jsr')">Jet Set Radio</button>
       <button onclick="switchstation('jsrf')">Jet Set Radio Future</button>
+      <button onclick="switchstation('bumps')">Bumps</button>
+      <button onclick="switchstation('breakbeatbig')">Breakbeats</button>
+      <button onclick="switchstation('dubstepgrime')">Dubstep</button>
+      <button onclick="switchstation('footworktech')">Footwork Techno</button>
+      <button onclick="switchstation('housetechno')">House Techno</button>
+      <button onclick="switchstation('hiphop')">Hip Hop</button>
+      <button onclick="switchstation('junglednb')">Jungle DnB</button>
       <button onclick="switchstation('rand')">Random</button>
     </div>
-    <audio autoplay id="stream" src="music/live/iloveyoubump.mp3" allow="autoplay" onended="skip(1)"></audio>
-    <center><img src="images/Backward.png" width="100" class="skipbut" onclick="skip(-1)">
-    <div class="turntable"><img src="images/live_record.png" width="540" id="record" class="rotate image1">
-    <img src="images/light.png" width="540" id="light" class="light-rotate image2" onclick="stop()"></div>
-    <img src="images/Forward.png" width="100" class="skipbut" onclick="skip(1)">
-    <h2>Tokyo-To Online</h2></center>
+    <audio autoplay id="stream" src="music/static.mp3" allow="autoplay" onended="skip(1)"></audio>
+    <center>
+      <div class="turntable"><img src="images/light.png" width="75%" id="record" class="rotate image1">
+      <img src="images/light.png" width="75%" id="light" class="light-rotate image2" onclick="stop()"></div>
+      <table style="width: 100px;">
+        <tr>
+          <td><img src="images/Backward.png" width="100" class="skipbut" onclick="skip(-1)"></td>
+          <td style="width: 100px;"><h2 id="title">Tokyo-To Online</h2></td>
+          <td><img src="images/Forward.png" width="100" class="skipbut" onclick="skip(1)"></td>
+        </tr>
+      </table>
+    </center>
   </div>
 </body>
 </html>
