@@ -110,7 +110,8 @@ window.popinout = function(){
 window.gamestart = function(){
   document.getElementsByClassName("opening")[0].classList.add("fadeout");
   switchstation(Object.keys(stationList)[Math.floor(Math.random() * Object.keys(stationList).length)]);
-    setTimeout(function() {document.getElementsByClassName("opening")[0].style.display = "none";
+    setTimeout(function() {
+      document.getElementById("stream").src="music/static.mp3";document.getElementsByClassName("opening")[0].style.display = "none";
     document.getElementsByClassName("content")[0].style.display = "block";
     stop();},1000);
 }
