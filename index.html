@@ -34,15 +34,18 @@
     </div>
     <audio autoplay id="stream" src="" allow="autoplay" onended="skip(1)"></audio>
     <center>
-      <div class="turntable"><img src="images/light.png" width="75%" id="record" class="rotate image1">
-      <img src="images/light.png" width="75%" id="light" class="light-rotate image2" onclick="stop()"></div>
-      <table style="width: 100px;">
-        <tr>
+      <table>
+        <tr style="align-items: center;">
           <td><img src="images/Backward.png" width="100" class="skipbut" onclick="skip(-1)"></td>
-          <td style="width: 100px;"><h2 id="title">Tokyo-To Online</h2></td>
+          <td >
+          <div class="turntable"><img src="images/light.png" width="75%" id="record" class="rotate image1">
+          <img src="images/light.png" width="75%" id="light" class="light-rotate image2" onclick="stop()"></div></td>
           <td><img src="images/Forward.png" width="100" class="skipbut" onclick="skip(1)"></td>
         </tr>
       </table>
+      <table>
+      <tr style="width: 100%; align-items: center;"><td><h2 id="title">Tokyo-To Online</h2></td></tr>
+    </table>
     </center>
   </div>
 </body>

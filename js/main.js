@@ -30,14 +30,13 @@ window.skip = function(val){
   }
   if (theStation=="rand"){//this is a pretty dumb way to circumvent the folder seperation for the randomizer
     document.getElementById("stream").src="music/"+stationList[theStation][count];
-    console.log("music/"+stationList[theStation][count]);
+    document.getElementById("title").innerHTML = stationList[theStation][count].substring(stationList[theStation][count].indexOf("/")+1,stationList[theStation][count].lastIndexOf("."));
   }else{
     document.getElementById("stream").src="music/"+theStation+"/"+stationList[theStation][count];
-    console.log("music/"+theStation+"/"+stationList[theStation][count]);
+    document.getElementById("title").innerHTML = stationList[theStation][count].substring(0,stationList[theStation][count].lastIndexOf("."));
   }
   document.getElementById("record").style.filter = " grayscale(0%)";
   document.getElementById("record").style.animationPlayState = 'running';
-  document.getElementById("title").innerHTML = stationList[theStation][count];
   document.getElementById("stream").play();
 }
 
